@@ -11,11 +11,7 @@ const JobCard = ({ job }) => {
     job_title = 'No Title',
     company_name = 'No Company',
     location = 'No Location',
-    job_type = 'N/A',
-    min_salary = 'N/A',
-    max_salary = 'N/A',
-    application_deadline = 'N/A',
-    job_description = 'No description provided.',
+ 
     created_at,
   } = job;
 
