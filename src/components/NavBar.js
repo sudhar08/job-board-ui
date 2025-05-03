@@ -67,7 +67,12 @@ const Navbar = () => {
       
       <div className="flex items-center">
         <div className="w-10 h-10 rounded-full overflow-hidden mr-4">
-          <Image src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+        <Image 
+  src="/logo.png" 
+  alt="Logo" 
+  width={100}  // Specify width
+  height={100} // Specify height
+ />
         </div>
       </div>
 
