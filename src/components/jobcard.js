@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React from 'react';
 import { FiBriefcase, FiMapPin, FiDollarSign } from 'react-icons/fi';
 
@@ -47,7 +48,7 @@ const JobCard = ({ job }) => {
 
       {/* Company logo */}
       <div className="flex items-center mb-3">
-        <img
+        <Image
           src="/logo.png" // update this to dynamic logo if available
           alt={company_name}
           className="w-10 h-10 rounded-full object-contain"

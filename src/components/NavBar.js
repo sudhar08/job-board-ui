@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -66,7 +67,7 @@ const Navbar = () => {
       
       <div className="flex items-center">
         <div className="w-10 h-10 rounded-full overflow-hidden mr-4">
-          <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+          <Image src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
         </div>
       </div>
 
