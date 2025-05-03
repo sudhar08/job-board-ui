@@ -9,7 +9,7 @@ const JobCard = ({ job }) => {
 
   const {
     job_title = 'No Title',
-    company_name = 'No Company',
+    //company_name = 'No Company',
     location = 'No Location',
  
     created_at,
