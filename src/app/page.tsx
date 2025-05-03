@@ -1,4 +1,4 @@
-import Navbar from '../components/Navbar';
+import Navbar from '../components/NavBar';
 import SearchBar from '../components/search';
 import JobListings from '../components/joblisting';
 
