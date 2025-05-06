@@ -1,20 +1,17 @@
-"use client";
-
 import { FiSearch, FiMapPin } from 'react-icons/fi';
-import { useState } from 'react';
 
-const SearchBar = () => {
-  const [salary, setSalary] = useState(50);
-
+const SearchBar = ({ filters, setFilters }) => {
   return (
     <div className="bg-white py-6 px-8 flex items-center justify-between rounded-md shadow-md space-x-4">
-      {/* Search input — made longer */}
+      {/* Search input */}
       <div className="relative flex-grow max-w-md">
         <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         <input
           type="text"
           placeholder="Search By Job Title, Role"
-          className="w-full pl-10 pr-4 py-2 rounded-md  focus:outline-none focus:border-purple-500"
+          value={filters.query}
+          onChange={(e) => setFilters({ ...filters, query: e.target.value })}
+          className="w-full pl-10 pr-4 py-2 rounded-md focus:outline-none focus:border-purple-500"
         />
       </div>
 
@@ -23,8 +20,12 @@ const SearchBar = () => {
       {/* Location select */}
       <div className="relative">
         <FiMapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-        <select className="pl-10 pr-4 py-2 rounded-md  focus:outline-none focus:border-purple-500 appearance-none">
-          <option>Preferred Location</option>
+        <select
+          value={filters.location}
+          onChange={(e) => setFilters({ ...filters, location: e.target.value })}
+          className="pl-10 pr-4 py-2 rounded-md focus:outline-none focus:border-purple-500 appearance-none"
+        >
+          <option value="">Preferred Location</option>
           <option>Chennai</option>
           <option>Bangalore</option>
           <option>Pune</option>
@@ -45,8 +46,12 @@ const SearchBar = () => {
 
       {/* Job type select */}
       <div className="relative">
-        <select className="pl-4 pr-10 py-2 rounded-md  focus:outline-none focus:border-purple-500 appearance-none">
-          <option>Job type</option>
+        <select
+          value={filters.jobType}
+          onChange={(e) => setFilters({ ...filters, jobType: e.target.value })}
+          className="pl-4 pr-10 py-2 rounded-md focus:outline-none focus:border-purple-500 appearance-none"
+        >
+          <option value="">Job type</option>
           <option>Fulltime</option>
           <option>Parttime</option>
           <option>Internship</option>
@@ -72,11 +77,11 @@ const SearchBar = () => {
           type="range"
           min="10"
           max="100"
-          value={salary}
-          onChange={(e) => setSalary(e.target.value)}
+          value={filters.salary}
+          onChange={(e) => setFilters({ ...filters, salary: e.target.value })}
           className="w-40"
         />
-        <span className="text-sm font-semibold mt-1">₹{salary}k</span>
+        <span className="text-sm font-semibold mt-1">₹{filters.salary}k</span>
       </div>
     </div>
   );

@@ -9,13 +9,11 @@ const JobCard = ({ job }) => {
 
   const {
     job_title = 'No Title',
-    //company_name = 'No Company',
     location = 'No Location',
- 
     created_at,
+    salary = 0,
   } = job;
 
-  // Calculate "time ago"
   const getTimeAgo = (date) => {
     const now = new Date();
     const createdDate = new Date(date);
@@ -36,21 +34,25 @@ const JobCard = ({ job }) => {
   const timeAgo = created_at ? getTimeAgo(created_at) : 'Just now';
 
   return (
-    <div className="bg-white rounded-xl shadow-md border p-4 flex flex-col justify-between relative">
+    <div className="bg-white rounded-xl shadow-md  p-4 flex flex-col justify-between relative">
       {/* Top right badge */}
       <div className="absolute top-2 right-2 bg-blue-100 text-blue-600 text-xs font-semibold px-2 py-1 rounded-full">
         {timeAgo}
       </div>
 
-      {/* Company logo */}
-      <div className="flex items-center mb-3">
-      <Image 
-  src="/logo.png" 
-  alt="Logo" 
-  width={50}  // Specify width
-  height={50} // Specify height
-/>
-      </div>
+      {/* Company logo inside square box */}
+<div className="flex items-center mb-3">
+  <div className="w-16 h-16 bg-gray-100 rounded-lg shadow-lg flex items-center justify-center">
+    <Image
+      src="/logo.png"
+      alt="Logo"
+      width={40}
+      height={40}
+      className="rounded-full"
+    />
+  </div>
+</div>
+
 
       {/* Job title */}
       <h3 className="text-lg font-semibold text-gray-800 mb-1">{job_title}</h3>
@@ -67,7 +69,7 @@ const JobCard = ({ job }) => {
         </div>
         <div className="flex items-center space-x-1">
           <FiDollarSign className="text-gray-400" />
-          <span>12 LPA</span>
+          <span>₹{salary} LPA</span>
         </div>
       </div>
 

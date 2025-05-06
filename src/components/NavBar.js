@@ -63,20 +63,19 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative mx-auto w-full max-w-5xl bg-white py-4 px-8 flex items-center justify-between rounded-4xl mt-4 shadow-2xl ring-1 ring-gray-200">
-      
+    <div className="relative mx-auto w-full max-w-3xl bg-white py-4 px-8 flex items-center justify-between rounded-4xl mt-4 shadow-2xl ring-1 ring-gray-200">
       <div className="flex items-center">
         <div className="w-10 h-10 rounded-full overflow-hidden mr-4">
-        <Image 
-  src="/logo.png" 
-  alt="Logo" 
-  width={100}  // Specify width
-  height={100} // Specify height
- />
+          <Image 
+            src="/logo.png" 
+            alt="Logo" 
+            width={100}
+            height={100}
+          />
         </div>
       </div>
 
-      <nav className="absolute left-1/2 transform -translate-x-1/2 flex space-x-6">
+      <nav className="flex space-x-9">
         <a href="#" className="text-gray-700 hover:text-purple-500">Home</a>
         <a href="#" className="text-gray-700 hover:text-purple-500">Find Jobs</a>
         <a href="#" className="text-gray-700 hover:text-purple-500">Find Talents</a>
@@ -85,9 +84,9 @@ const Navbar = () => {
       </nav>
 
       <button
-  className="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full px-6 py-2 hover:from-purple-600 hover:to-purple-700"
-  onClick={handleOpenPopup}
->
+        className="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full px-6 py-2 hover:from-purple-600 hover:to-purple-700"
+        onClick={handleOpenPopup}
+      >
         Create Jobs
       </button>
 
@@ -124,6 +123,7 @@ const Navbar = () => {
                   required
                 />
               </div>
+
               <div>
                 <label className="block text-gray-700 text-sm font-bold mb-1">Location</label>
                 <select
@@ -139,6 +139,7 @@ const Navbar = () => {
                   <option>Remote</option>
                 </select>
               </div>
+
               <div>
                 <label className="block text-gray-700 text-sm font-bold mb-1">Job Type</label>
                 <select
@@ -152,35 +153,46 @@ const Navbar = () => {
                   <option>Contract</option>
                 </select>
               </div>
-              <div>
-                <label className="block text-gray-700 text-sm font-bold mb-1">Min Salary</label>
-                <input
-                  type="text"
-                  placeholder="₹1,00,000"
-                  className="w-full px-4 py-3 border rounded-md focus:outline-none focus:border-purple-500 text-gray-700"
-                  value={minSalary}
-                  onChange={(e) => setMinSalary(e.target.value)}
-                />
+
+              {/* Min & Max Salary side by side */}
+              <div className="col-span-2 flex space-x-3">
+                <div className="w-1/5">
+                  <label className="block text-gray-700 text-sm font-bold mb-1">Min Salary</label>
+                  <input
+                    type="text"
+                    placeholder="₹1,00,000"
+                    className="w-full px-4 py-3 border rounded-md focus:outline-none focus:border-purple-500 text-gray-700"
+                    value={minSalary}
+                    onChange={(e) => setMinSalary(e.target.value)}
+                  />
+                </div>
+                <div className="w-1/5">
+                  <label className="block text-gray-700 text-sm font-bold mb-1">Max Salary</label>
+                  <input
+                    type="text"
+                    placeholder="₹12,00,000"
+                    className="w-full px-4 py-3 border rounded-md focus:outline-none focus:border-purple-500 text-gray-700"
+                    value={maxSalary}
+                    onChange={(e) => setMaxSalary(e.target.value)}
+                  />
+                </div>
+                <div className='px-6'></div>
+                <div className="w-1/2">
+                  <label className="block text-gray-700 text-sm font-bold mb-1">Application Deadline</label>
+                  <input
+                    type="date"
+                    className="w-full px-4 py-3 border rounded-md focus:outline-none focus:border-purple-500 text-gray-700"
+                    value={applicationDeadline}
+                    onChange={(e) => setApplicationDeadline(e.target.value)}
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-gray-700 text-sm font-bold mb-1">Max Salary</label>
-                <input
-                  type="text"
-                  placeholder="₹12,00,000"
-                  className="w-full px-4 py-3 border rounded-md focus:outline-none focus:border-purple-500 text-gray-700"
-                  value={maxSalary}
-                  onChange={(e) => setMaxSalary(e.target.value)}
-                />
+
+              {/* Application Deadline on right */}
+              <div className="col-span-2 flex justify-end">
+               
               </div>
-              <div>
-                <label className="block text-gray-700 text-sm font-bold mb-1">Application Deadline</label>
-                <input
-                  type="date"
-                  className="w-full px-4 py-3 border rounded-md focus:outline-none focus:border-purple-500 text-gray-700"
-                  value={applicationDeadline}
-                  onChange={(e) => setApplicationDeadline(e.target.value)}
-                />
-              </div>
+
               <div className="col-span-2">
                 <label className="block text-gray-700 text-sm font-bold mb-1">Job Description</label>
                 <textarea
@@ -192,7 +204,8 @@ const Navbar = () => {
                   required
                 ></textarea>
               </div>
-              <div className="col-span-2 flex justify-between">
+
+              <div className="col-span-2 flex justify-between mt-4">
                 <button
                   type="button"
                   className="bg-white text-gray-700 border border-gray-300 px-6 py-3 rounded-md hover:bg-gray-100"
